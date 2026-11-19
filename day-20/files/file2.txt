@@ -1,0 +1,2 @@
+python is simple and smart programming language
+Django is a cool python library

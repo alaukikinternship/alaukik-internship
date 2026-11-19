@@ -1,0 +1,5 @@
+java is high level object Oriented Programming Language
+Java is a PlateForm independent Programming Language
+java has a cool frame works like
+hibernate
+Spring boot
