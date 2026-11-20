@@ -1,0 +1,31 @@
+create database employee_db;
+use employee_db;
+
+//now creating table employee
+
+create table employee(
+employee_id  int primary key auto_increment ,
+employee_name varchar(20) not null,
+employee_email varchar(100) not null,
+employee_designation VARCHAR(20) not null,
+employee_salary int 
+
+);
+//now creating table department
+
+CREATE TABLE departments (
+    dept_id INT PRIMARY KEY AUTO_INCREMENT,
+    dept_name VARCHAR(100) NOT NULL UNIQUE,
+    location VARCHAR(100)
+);
+insert into department(dept_name,location) values("ComputerSecience","Indore");
+
+//now creating table roles
+
+CREATE table roles(
+role_id int PRIMARY KEY AUTO_INCREMENT,
+role_name varchar(30) not null,
+description varchar(255)
+
+);
+insert into roles(role_name,description) values("Java Developer","Backend Developer");
