@@ -1,0 +1,165 @@
+INSERT INTO employee
+(employee_name, employee_email, employee_designation, employee_salary)
+VALUES
+('Rahul', 'rahul@gmail.com', 'Developer', 35000),
+('Aman', 'aman@gmail.com', 'Tester', 30000),
+('Mohammad', 'mohammad@gmail.com', 'Java Dev', 50000),
+('Sufiyan', 'sufiyan@gmail.com', 'Designer', 40000),
+('Umer', 'umer@gmail.com', 'Developer', 45000),
+('Rohit', 'rohit@gmail.com', 'Manager', 60000),
+('Arman', 'arman@gmail.com', 'Tester', 28000);
+
+
+//select statement
+
+-- Display all employees
+SELECT * FROM employee;
+
+-- Display employee names
+SELECT employee_name FROM employee;
+
+-- Display name and salary
+SELECT employee_name, employee_salary
+FROM employee;
+
+-- Display unique designations
+SELECT DISTINCT employee_designation
+FROM employee;
+
+//update
+
+-- Update employee salary
+UPDATE employee
+SET employee_salary = 55000
+WHERE employee_id = 1;
+
+-- Update employee designation
+UPDATE employee
+SET employee_designation = 'Java Dev'
+WHERE employee_id = 3;
+
+-- Update employee email
+UPDATE employee
+SET employee_email = 'newrahul@gmail.com'
+WHERE employee_id = 1;
+
+-- Increase salary by 10%
+UPDATE employee
+SET employee_salary = employee_salary * 1.10;
+
+
+//delete
+-- Delete employee by ID
+DELETE FROM employee
+WHERE employee_id = 7;
+
+-- Delete employees earning less than 30000
+DELETE FROM employee
+WHERE employee_salary < 30000;
+
+//where
+
+-- Salary greater than 40000
+SELECT * FROM employee
+WHERE employee_salary > 40000;
+
+-- Salary less than 40000
+SELECT * FROM employee
+WHERE employee_salary < 40000;
+
+-- Find employee by name
+SELECT * FROM employee
+WHERE employee_name = 'Rahul';
+
+-- Salary between 30000 and 50000
+SELECT * FROM employee
+WHERE employee_salary BETWEEN 30000 AND 50000;
+
+-- Names starting with M
+SELECT * FROM employee
+WHERE employee_name LIKE 'M%';
+
+-- Designation is Developer
+SELECT * FROM employee
+WHERE employee_designation = 'Developer';
+
+-- Salary greater than 30000 AND designation is Developer
+SELECT * FROM employee
+WHERE employee_salary > 30000
+AND employee_designation = 'Developer';
+
+-- Find employees with selected IDs
+SELECT * FROM employee
+WHERE employee_id IN (1, 2, 3);
+
+//order by
+
+-- Salary ascending
+SELECT * FROM employee
+ORDER BY employee_salary ASC;
+
+-- Salary descending
+SELECT * FROM employee
+ORDER BY employee_salary DESC;
+
+-- Employee names alphabetically
+SELECT * FROM employee
+ORDER BY employee_name ASC;
+
+-- Top 3 highest-paid employees
+SELECT * FROM employee
+ORDER BY employee_salary DESC
+LIMIT 3;
+
+-- Sort by designation and salary
+SELECT * FROM employee
+ORDER BY employee_designation ASC, employee_salary DESC;
+
+//group by
+
+-- Count employees by designation
+SELECT
+    employee_designation,
+    COUNT(*) AS total_employees
+FROM employee
+GROUP BY employee_designation;
+
+-- Average salary by designation
+SELECT
+    employee_designation,
+    AVG(employee_salary) AS average_salary
+FROM employee
+GROUP BY employee_designation;
+
+-- Total salary by designation
+SELECT
+    employee_designation,
+    SUM(employee_salary) AS total_salary
+FROM employee
+GROUP BY employee_designation;
+
+-- Highest salary by designation
+SELECT
+    employee_designation,
+    MAX(employee_salary) AS highest_salary
+FROM employee
+GROUP BY employee_designation;
+
+//Having
+
+-- Designations having more than 1 employee
+SELECT
+    employee_designation,
+    COUNT(*) AS total_employees
+FROM employee
+GROUP BY employee_designation
+HAVING COUNT(*) > 1;
+
+-- Designations having average salary above 35000
+SELECT
+    employee_designation,
+    AVG(employee_salary) AS average_salary
+FROM employee
+GROUP BY employee_designation
+HAVING AVG(employee_salary) > 35000;
+
